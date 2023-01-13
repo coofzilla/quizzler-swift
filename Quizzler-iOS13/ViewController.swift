@@ -16,16 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var falseButton: UIButton!
     
     let questions = [
-        ["Swift is a compiled programming language.", true],
-        ["Swift is an object-oriented language.", true],
-        ["Swift was developed by Apple Inc.", true],
-        ["Swift is compatible with both iOS and macOS.", true],
-        ["Swift is statically typed.", true],
-        ["Swift allows you to mix imperative and functional programming paradigms.", true],
-        ["Swift does not support type inference.", false],
-        ["Swift does not have a garbage collector.", false],
-        ["Swift does not support exception handling.", false],
-        ["Swift does not have a native string interpolation feature.", false]
+        Question(text: "Swift is a compiled programming language.", answer: "True"),
+        Question(text:"Swift is an object-oriented language.", answer: "True"),
+        Question(text: "Swift was developed by Google", answer: "False"),
     ]
     
     var questionNumber = 0
@@ -37,9 +30,9 @@ class ViewController: UIViewController {
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
         let userAnswer = sender.currentTitle?.lowercased()
-        let actualAnswer = questions[questionNumber][1]
-        let actualAnswerString = actualAnswer as! Bool ? "true" : "false"
-        if userAnswer == actualAnswerString {
+        let actualAnswer = questions[questionNumber].answer.lowercased()
+        
+        if userAnswer == actualAnswer {
             print("Right")
         } else {
             print("Wrong")
@@ -55,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     func updateUI(){
-        questionLabel.text = questions[questionNumber][0] as? String
+        questionLabel.text = questions[questionNumber].text
     }
 }
 
