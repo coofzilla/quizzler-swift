@@ -34,14 +34,6 @@ class ViewController: UIViewController {
             sender.backgroundColor = UIColor.red
         }
         
-        
-        
-        let quizEnd = questionNumber == questions.count - 1
-        if quizEnd {
-            questionNumber = 0
-        } else {
-            questionNumber += 1
-        }
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
     }
     
